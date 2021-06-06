@@ -38,7 +38,7 @@
 			1. Create an image and set the following attributes with Vue {src, alt, title}
 			2. Augment the span below to include another class called "highlight", which has a yellow border.
 		-->
-		<span v-bind:class="loadClass">
+		<span v-bind:class="loadClass"> <!-- tried adding v-bind:style="highlight" and calling it in the query selector, could not get it to work-->
 			look at me!
 			<img v-bind:src="newSrc" v-bind:alt="newAlt" v-bind:title="newTitle">
 		</span>
@@ -50,10 +50,12 @@
 		el: '#app',
 		data:{
 			loadClass : 'container',
-			//newStyle : 'font-size:30px;',
 			newAlt : 'Green-Day',
 			newSrc : 'images/greenday.jpg',
-			newTitle : 'Green Day'
+			newTitle : 'Green Day',
+			//highlight : {
+				//borderColor:yellow
+			//}
 		}
 	});
 	
