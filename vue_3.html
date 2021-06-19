@@ -1,42 +1,81 @@
 <!DOCTYPE HTML>
 <html>
-	<head>
-		<title>v-if If Statements</title>
-		<meta charset="UTF-8">
-		<script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
-		<style>
-			.special {background:yellow; border: 1px dotted #fe0000; padding:30px; display:block; text-align:center;}
-			.important {font-weight:bold; font-size:30px;}
-		</style>
-	</head>
-	<body>
-	
-	<div id="app">
-		<span v-if="profile">
-			Profile of {{profile.fname}} {{profile.lname}} 
+
+<head>
+	<title>v-if If Statements</title>
+	<meta charset="UTF-8">
+	<script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+	<style>
+		.special {
+			background: yellow;
+			border: 1px dotted #fe0000;
+			padding: 30px;
+			display: block;
+			text-align: center;
+		}
+
+		.important {
+			font-weight: bold;
+			font-size: 30px;
+		}
+	</style>
+</head>
+
+<body>
+
+	<div id="app"
+		style="box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2); padding: 2px 16px; max-width: 230px; text-align: center;">
+		<div v-if="profile.img">
+			<img v-bind:src="profile.img" v-bind:alt="profile.desc" style="height:300px;" />
+		</div>
+		<div v-else>
+			<img src="https://media.istockphoto.com/vectors/no-image-vector-symbol-missing-available-icon-no-gallery-for-this-vector-id1128826884?k=6&m=1128826884&s=170667a&w=0&h=F6kUwTcsLXUojmGFxN2wApEKgjx63zcIshCSOmnfEFs="
+				alt="empty photo placeholder" />
+		</div>
+		<h1>
+			<span v-if="profile" style=" font-size: 22px;">
+				Profile of {{profile.fname}} {{profile.lname}}
+			</span>
+			<span v-else>
+				No Profile Data found.
+			</span>
+		</h1>
+		<span v-if="profile.desc" style=" font-size: 15px;">
+			{{profile.desc}}
 		</span>
 		<span v-else>
-			No Profile Data found.
+			No Description found.
+		</span>
+		</br>
+		</br>
+		<span v-if="profile.bio" style=" font-size: 15px;">
+			{{profile.bio}}
+		</span>
+		<span v-else>
+			No Description found.
 		</span>
 	</div>
-	
+
 	<script>
-	var app = new Vue({
-		el: '#app',
-		
-		data:{
-			/*
-			profile:{
-				fname: "John",
-				lname: "Doe"	
+		var app = new Vue({
+			el: '#app',
+
+			data: {
+
+				profile: {
+					fname: "Amanda",
+					lname: "Elias",
+					desc: "My ideal day is going to the beach during the day and spending the evening on a patio!",
+					bio: "I am a front end developer by day and a professional at destroying every one of my animal crossing islands by night.",
+					img: "images/me.jpg"
+				}
+
 			}
-			*/
-		}
-		
-	});
+
+		});
 	</script>
-	
-		<!--
+
+	<!--
 		//step 1: Read Code Above
 		//step 2: Does the profile show up?
 		
@@ -56,5 +95,6 @@
 			(Something like this https://www.w3schools.com/howto/howto_css_cards.asp)
 		3. Write conditionals if information is missing (i.e. 'no bio available' if bio is blank, generic image if no pic is found)
 		-->
-	</body>
+</body>
+
 </html>
