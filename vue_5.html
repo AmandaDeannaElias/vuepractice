@@ -1,42 +1,71 @@
 <!DOCTYPE HTML>
 <html>
-	<head>
-		<title>v-on Event Handlers</title>
-		<meta charset="UTF-8">
-		<script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
-		<style>
-			.box{width:200px; height:200px; background:green; border:2px solid black; text-align:center; line-height:200px; color:white;}
-			.hidden{display:none;}
-		</style>
-	</head>
-	<body>
-	
+
+<head>
+	<title>v-on Event Handlers</title>
+	<meta charset="UTF-8">
+	<script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+	<style>
+		.box {
+			width: 200px;
+			height: 200px;
+			background: green;
+			border: 2px solid black;
+			text-align: center;
+			line-height: 200px;
+			color: white;
+		}
+
+		.hidden {
+			display: none;
+		}
+
+		.boxcolor {
+			width: 100px;
+			background: red;
+
+		}
+	</style>
+</head>
+
+<body>
+
 	<div id="app">
 		<div v-bind:class="{box:true, hidden:boxHidden}">{{message}}</div>
-		<button v-on:click="showhide();">Click</button>
+		<button v-on:click="showhide()">{{buttonlabel}}</button>
+		<div v-on:mouseenter="biggerbox()" class="boxcolor" v-bind:style="{'height': hoverheight + 'px'}"></div>
 	</div>
-	
+	</div>
+
 	<script>
-	var app = new Vue({
-		el: '#app',
-		
-		data:{
-			boxHeight:200,
-			boxHidden : false,
-			message  : 'Make me disappear!'
-		},
-		methods:{
-			showhide : function(){
+		var app = new Vue({
+			el: '#app',
+
+			data: {
+				boxHeight: 200,
+				boxHidden: false,
+				message: 'Make me disappear!',
+				buttonlabel: 'Hide',
+				hoverheight: 100
+			},
+			methods: {
+				showhide : function(){
 				console.log(this.boxHidden);
 				if(this.boxHidden){
 					this.boxHidden=false;
+					this.buttonlabel = "Hide";
 				}else{
-					this.boxHidden=true;	
+					this.boxHidden=true;
+					this.buttonlabel = "Show";
 				}
+			},
+			biggerbox: function () {
+				this.hoverheight += 10;
+				console.log(this.hoverheight);
 			}
-		}
-		
-	});
+			}
+
+		});
 	</script>
 	<!--
 		Step 1: Read the code above
@@ -57,6 +86,7 @@
 		2. Make a red box 100px * 100px that becomes 10px taller every time you hover over it
 		
 	
-	-->	
-	</body>
+	-->
+</body>
+
 </html>
