@@ -49,20 +49,20 @@
 				hoverheight: 100
 			},
 			methods: {
-				showhide : function(){
-				console.log(this.boxHidden);
-				if(this.boxHidden){
-					this.boxHidden=false;
-					this.buttonlabel = "Hide";
-				}else{
-					this.boxHidden=true;
-					this.buttonlabel = "Show";
+				showhide: function () {
+					console.log(this.boxHidden);
+					if (this.boxHidden) {
+						this.boxHidden = false;
+						this.buttonlabel = "Hide";
+					} else {
+						this.boxHidden = true;
+						this.buttonlabel = "Show";
+					}
+				},
+				biggerbox: function () {
+					this.hoverheight += 10;
+					console.log(this.hoverheight);
 				}
-			},
-			biggerbox: function () {
-				this.hoverheight += 10;
-				console.log(this.hoverheight);
-			}
 			}
 
 		});
